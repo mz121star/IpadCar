@@ -19,13 +19,13 @@
                     plate.selectedPlate = p;
                     plate.canOp = false;
                     _.each(plate.goodsList, function (goods) {
-                        plate.sum = plate.sum + (parseInt(goods.SALEPRICE) * parseInt(goods.SUMNUMBER));
+                        plate.sum = plate.sum + (parseInt(goods.TEMPSALEPRICE) * parseInt(goods.SUMNUMBER));
                     });
                     $scope.$watch("plate.goodsList", function (v1, v2) {
                         plate.sum = 0;
                         _.each(v1, function (goods) {
                             if (goods.SUMNUMBER < 1 || goods.SUMNUMBER == null) goods.SUMNUMBER = 1;
-                            plate.sum = plate.sum + (parseInt(goods.SALEPRICE) * parseInt(goods.SUMNUMBER));
+                            plate.sum = plate.sum + (parseInt(goods.TEMPSALEPRICE) * parseInt(goods.SUMNUMBER));
                         });
                     }, true);
                 });
@@ -131,8 +131,10 @@
                             <th>序号</th>
                             <th>商品/服务</th>
                             <th>单价</th>
+                            <th>临时单价</th>
                             <th>数量</th>
                             <th>金额</th>
+                            <th>销售人员</th>
                             <th>保存</th>
                             <th>删除</th>
                         </tr>
@@ -142,10 +144,12 @@
                             <td>{{$index + 1}}</td>
                             <td>{{goods.GOODSNAME}}</td>
                             <td>{{goods.SALEPRICE}}<i class="fa fa-jpy"></i></td>
+                            <td>{{goods.TEMPSALEPRICE}}<i class="fa fa-jpy"></i></td>
                             <td>
                                 <input type="number" value="{{goods.SUMNUMBER}}" ng-required min="1" ng-model="goods.SUMNUMBER" />
                             </td>
-                            <td>{{goods.SALEPRICE * goods.SUMNUMBER}}<i class="fa fa-jpy"></i></td>
+                            <td>{{goods.TEMPSALEPRICE * goods.SUMNUMBER}}<i class="fa fa-jpy"></i></td>
+                            <td>{{goods.SALESMAN}}</td>
                             <td>
                                 <button class="btn btn-success " ng-click="plate.modifyGoods(goods)"><i class="fa fa-save"></i>保存</button>
                             </td>
