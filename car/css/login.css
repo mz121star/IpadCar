@@ -1,0 +1,26 @@
+body {margin:0;padding:0;color:#333;font-size:12px;font-family:arial;background: url(../images/admin_bg2.png) #FFF center -120px;;}
+html {margin:0;padding:0;border:0;}
+.panel {position: absolute;
+    top: 185px;
+    left: 50%;
+    margin-left: -200px;
+    width: 400px;
+    height: 270px;
+    background-color: white;
+    border-radius: 10px;
+    opacity: 0.9;}
+.panel .username {position:absolute;top:80px;left:32px;width:330px;height:30px;border:1px solid #CCC;background:#EEE;font-size:18px;padding-left:5px;}
+.panel .password {position:absolute;top:140px;left:32px;width:330px;height:30px;border:1px solid #CCC;background:#EEE;font-size:18px;padding-left:5px;}
+.panel .rememberme {position:absolute;bottom:50px;left:30px;}
+.panel .rememberme .checkbox {float:left;}
+.panel .rememberme .label {float:left;margin-left:5px;} 
+.panel .loginbtn {position:absolute;bottom:40px;right:35px;background:#016CCC;border:none;color:#FFF;padding:8px 12px;}
+
+.copyright {position:absolute;bottom:5px;width:100%;text-align:center;color:#FFF;}
+.copyright a {color:#FFF;text-decoration:none;}
+.copyright a:hover {}
+#car{background: url(../images/car1.png) ;width: 680px; height: 437px;position: absolute;top:-500px ; left: 1200px; }
+div { -moz-transition: all 0.5s ease-in;
+    -webkit-transition: all 0.5s ease-in;
+    -o-transition: all 0.5s ease-in;
+    transition: all 0.5s ease-in;}

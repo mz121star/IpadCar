@@ -1,0 +1,14 @@
+/**自定义*/
+.panel-group .panel-heading{border-bottom: 1px solid #A1B8DB;background-color: #4A94E4;color: #fff;border-top-right-radius: 0px;}
+.navbar{background-color: #4A94E4;color: white}
+.navbar-default .navbar-nav > li > a {color: #fff;}
+.navbar-default .navbar-brand {color: #fff;}
+.navbar-default {border-color: transparent;}
+.navbar-default .navbar-nav > li > a :hover{color: white}
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {color: #333;background-color: #C0C0C0;}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+color: #555;
+background-color: #FFF;
+}
+.win1{ background-image: url(../images/win1.png);width: 32px;height: 32px;display: inline-block;text-indent: -9999px}
+.win2{background-image: url(../images/win2.png);width: 32px;height: 32px;display: inline-block;text-indent: -9999px}

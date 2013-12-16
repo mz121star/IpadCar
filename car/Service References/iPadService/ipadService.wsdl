@@ -1,0 +1,600 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Authentication">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strLoginName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPassword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthenticationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AuthenticationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllPlate">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllPlateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllPlateResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllGoodsCategory">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllGoodsCategoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllGoodsCategoryResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGoodsTypeByCategoryID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCategoryID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGoodsTypeByCategoryIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGoodsTypeByCategoryIDResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGoodsByTypeID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strTypeID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGoodsByTypeIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGoodsByTypeIDResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="NewBill">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strBillData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="NewBillResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NewBillResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteBill">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strSalesID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteBillResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteBillResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ClosingBill">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strSalesID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ClosingBillResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ClosingBillResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadBill">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strSalesID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadBillResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadBillResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddGoods">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strSalesID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddGoodsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddGoodsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteGoods">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strSalesID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strGoodsID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteGoodsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteGoodsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllBrand">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllBrandResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllBrandResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllCars">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllCarsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllCarsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGoodsByTypeIDWithPage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strTypeID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strBrand" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCars" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPages" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGoodsByTypeIDWithPageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGoodsByTypeIDWithPageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AuthenticationSoapIn">
+    <wsdl:part name="parameters" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticationSoapOut">
+    <wsdl:part name="parameters" element="tns:AuthenticationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllPlateSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllPlate" />
+  </wsdl:message>
+  <wsdl:message name="GetAllPlateSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllPlateResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllGoodsCategorySoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllGoodsCategory" />
+  </wsdl:message>
+  <wsdl:message name="GetAllGoodsCategorySoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllGoodsCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGoodsTypeByCategoryIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGoodsTypeByCategoryID" />
+  </wsdl:message>
+  <wsdl:message name="GetGoodsTypeByCategoryIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGoodsTypeByCategoryIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGoodsByTypeIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGoodsByTypeID" />
+  </wsdl:message>
+  <wsdl:message name="GetGoodsByTypeIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGoodsByTypeIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="NewBillSoapIn">
+    <wsdl:part name="parameters" element="tns:NewBill" />
+  </wsdl:message>
+  <wsdl:message name="NewBillSoapOut">
+    <wsdl:part name="parameters" element="tns:NewBillResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteBillSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteBill" />
+  </wsdl:message>
+  <wsdl:message name="DeleteBillSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteBillResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClosingBillSoapIn">
+    <wsdl:part name="parameters" element="tns:ClosingBill" />
+  </wsdl:message>
+  <wsdl:message name="ClosingBillSoapOut">
+    <wsdl:part name="parameters" element="tns:ClosingBillResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadBillSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadBill" />
+  </wsdl:message>
+  <wsdl:message name="DownloadBillSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadBillResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddGoodsSoapIn">
+    <wsdl:part name="parameters" element="tns:AddGoods" />
+  </wsdl:message>
+  <wsdl:message name="AddGoodsSoapOut">
+    <wsdl:part name="parameters" element="tns:AddGoodsResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteGoodsSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteGoods" />
+  </wsdl:message>
+  <wsdl:message name="DeleteGoodsSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteGoodsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllBrandSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllBrand" />
+  </wsdl:message>
+  <wsdl:message name="GetAllBrandSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllBrandResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCarsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllCars" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCarsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllCarsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGoodsByTypeIDWithPageSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGoodsByTypeIDWithPage" />
+  </wsdl:message>
+  <wsdl:message name="GetGoodsByTypeIDWithPageSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGoodsByTypeIDWithPageResponse" />
+  </wsdl:message>
+  <wsdl:portType name="iPadServiceSoap">
+    <wsdl:operation name="Authentication">
+      <wsdl:input message="tns:AuthenticationSoapIn" />
+      <wsdl:output message="tns:AuthenticationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPlate">
+      <wsdl:input message="tns:GetAllPlateSoapIn" />
+      <wsdl:output message="tns:GetAllPlateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllGoodsCategory">
+      <wsdl:input message="tns:GetAllGoodsCategorySoapIn" />
+      <wsdl:output message="tns:GetAllGoodsCategorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGoodsTypeByCategoryID">
+      <wsdl:input message="tns:GetGoodsTypeByCategoryIDSoapIn" />
+      <wsdl:output message="tns:GetGoodsTypeByCategoryIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGoodsByTypeID">
+      <wsdl:input message="tns:GetGoodsByTypeIDSoapIn" />
+      <wsdl:output message="tns:GetGoodsByTypeIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="NewBill">
+      <wsdl:input message="tns:NewBillSoapIn" />
+      <wsdl:output message="tns:NewBillSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBill">
+      <wsdl:input message="tns:DeleteBillSoapIn" />
+      <wsdl:output message="tns:DeleteBillSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClosingBill">
+      <wsdl:input message="tns:ClosingBillSoapIn" />
+      <wsdl:output message="tns:ClosingBillSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadBill">
+      <wsdl:input message="tns:DownloadBillSoapIn" />
+      <wsdl:output message="tns:DownloadBillSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddGoods">
+      <wsdl:input message="tns:AddGoodsSoapIn" />
+      <wsdl:output message="tns:AddGoodsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGoods">
+      <wsdl:input message="tns:DeleteGoodsSoapIn" />
+      <wsdl:output message="tns:DeleteGoodsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllBrand">
+      <wsdl:input message="tns:GetAllBrandSoapIn" />
+      <wsdl:output message="tns:GetAllBrandSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCars">
+      <wsdl:input message="tns:GetAllCarsSoapIn" />
+      <wsdl:output message="tns:GetAllCarsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGoodsByTypeIDWithPage">
+      <wsdl:input message="tns:GetGoodsByTypeIDWithPageSoapIn" />
+      <wsdl:output message="tns:GetGoodsByTypeIDWithPageSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="iPadServiceSoap" type="tns:iPadServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Authentication">
+      <soap:operation soapAction="http://tempuri.org/Authentication" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPlate">
+      <soap:operation soapAction="http://tempuri.org/GetAllPlate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllGoodsCategory">
+      <soap:operation soapAction="http://tempuri.org/GetAllGoodsCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGoodsTypeByCategoryID">
+      <soap:operation soapAction="http://tempuri.org/GetGoodsTypeByCategoryID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGoodsByTypeID">
+      <soap:operation soapAction="http://tempuri.org/GetGoodsByTypeID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NewBill">
+      <soap:operation soapAction="http://tempuri.org/NewBill" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBill">
+      <soap:operation soapAction="http://tempuri.org/DeleteBill" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClosingBill">
+      <soap:operation soapAction="http://tempuri.org/ClosingBill" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadBill">
+      <soap:operation soapAction="http://tempuri.org/DownloadBill" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddGoods">
+      <soap:operation soapAction="http://tempuri.org/AddGoods" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGoods">
+      <soap:operation soapAction="http://tempuri.org/DeleteGoods" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllBrand">
+      <soap:operation soapAction="http://tempuri.org/GetAllBrand" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCars">
+      <soap:operation soapAction="http://tempuri.org/GetAllCars" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGoodsByTypeIDWithPage">
+      <soap:operation soapAction="http://tempuri.org/GetGoodsByTypeIDWithPage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="iPadServiceSoap12" type="tns:iPadServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Authentication">
+      <soap12:operation soapAction="http://tempuri.org/Authentication" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPlate">
+      <soap12:operation soapAction="http://tempuri.org/GetAllPlate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllGoodsCategory">
+      <soap12:operation soapAction="http://tempuri.org/GetAllGoodsCategory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGoodsTypeByCategoryID">
+      <soap12:operation soapAction="http://tempuri.org/GetGoodsTypeByCategoryID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGoodsByTypeID">
+      <soap12:operation soapAction="http://tempuri.org/GetGoodsByTypeID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NewBill">
+      <soap12:operation soapAction="http://tempuri.org/NewBill" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBill">
+      <soap12:operation soapAction="http://tempuri.org/DeleteBill" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClosingBill">
+      <soap12:operation soapAction="http://tempuri.org/ClosingBill" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadBill">
+      <soap12:operation soapAction="http://tempuri.org/DownloadBill" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddGoods">
+      <soap12:operation soapAction="http://tempuri.org/AddGoods" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGoods">
+      <soap12:operation soapAction="http://tempuri.org/DeleteGoods" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllBrand">
+      <soap12:operation soapAction="http://tempuri.org/GetAllBrand" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCars">
+      <soap12:operation soapAction="http://tempuri.org/GetAllCars" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGoodsByTypeIDWithPage">
+      <soap12:operation soapAction="http://tempuri.org/GetGoodsByTypeIDWithPage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="iPadService">
+    <wsdl:port name="iPadServiceSoap" binding="tns:iPadServiceSoap">
+      <soap:address location="http://localhost:48437/ipadService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="iPadServiceSoap12" binding="tns:iPadServiceSoap12">
+      <soap12:address location="http://localhost:48437/ipadService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
