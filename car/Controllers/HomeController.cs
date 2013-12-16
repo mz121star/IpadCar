@@ -32,6 +32,7 @@ namespace car.Controllers
             tree.FirstList = categoryList.RESULT;
             tree.SecondList = typeList;
             tree.ViewType = null;
+            tree.User = ((LoginUserDto)Session["user"]).EMPLOYEENAME;
             tree.Brand = services.GetAllBrand().RESULT;
             tree.Cars = services.GetAllCars().RESULT;
 
@@ -44,6 +45,7 @@ namespace car.Controllers
             var b = services.GetGoodsByTypeID(typeId).RESULT;
             tree.ViewType = viewType ?? 1;
             tree.Goods = b;
+            tree.User = ((LoginUserDto)Session["user"]).EMPLOYEENAME;
             return PartialView("Partial/_RightViewGrid", tree);
         }
 
@@ -107,11 +109,11 @@ namespace car.Controllers
         }
 
         [SessionUserParameter]
-        public ActionResult AddGoods(string goodsId)
+        public ActionResult AddGoods(string goodsId, decimal tempSalePrice, string salesMan)
         {
             GoodsDetailList list = new GoodsDetailList();
             list.DETAIL = new List<GoodsDetail>();
-            list.DETAIL.Add(new GoodsDetail { GOODSID = goodsId, SALESID = Session["SalesId"].ToString() });
+            list.DETAIL.Add(new GoodsDetail { GOODSID = goodsId, TEMPSALEPRICE = tempSalePrice.ToString(), SALESMAN = salesMan, SALESID = Session["SalesId"].ToString() });
             var message = services.AddGoods(list);
             return Json(message, JsonRequestBehavior.AllowGet);
         }
