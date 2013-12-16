@@ -5,38 +5,41 @@
 <script src='@Url.Content("~/Scripts/jquery.tmpl.js")'></script>
 <script>
     function addGoods(goodsId) {
-        if(confirm('确定要为<@(Session["plate"])>购买吗？'))
+        $('#buyModal').modal('show');
+        @*if(confirm('确定要为<@(Session["plate"])>购买吗？'))
         {
             $.post('@Url.Action("AddGoods")',{goodsId:goodsId},function(data){
                 alert(data.MESSAGE);
             });
-        }
+        }*@
     };
 
-        function showGoods(goods,ele) {
-            $('#content').html($('#goodsTmp').tmpl(goods));
-            if (ele!=undefined) {
-                $(ele).siblings().removeClass("active").end().addClass("active");
-            }
+    function showGoods(goods, ele) {
+        $('#content').html($('#goodsTmp').tmpl(goods));
+        if (ele != undefined) {
+            $(ele).siblings().removeClass("active").end().addClass("active");
         }
+    }
 </script>
 @if (Model.ViewType == null)
 {<div class="row">
 
-        <div class="jumbotron">
-            <h1>欢迎光临4s店!</h1>
-            <p>
-                优势一：会战沈城，低价购车，免费报名享优惠价格！<br />
-                优势二：签到有礼，购车有机会抽取万元大奖！<br />
-                优势三：保证沈城当期购车最低价格，正规4S店全国联保！<br />
-                优势四：团购现场看车，讲解（车型+车险）无强制性消费！<br />
-                优势五：车源丰富，团购享受优先提车
-            </p>
-            <p><a href='@Url.Action("Car")' class="btn btn-success btn-lg" role="button">选择车辆</a></p>
-        </div>
+    <div class="jumbotron">
+        <h1>欢迎光临4s店!</h1>
+        <p>
+            优势一：会战沈城，低价购车，免费报名享优惠价格！<br />
+            优势二：签到有礼，购车有机会抽取万元大奖！<br />
+            优势三：保证沈城当期购车最低价格，正规4S店全国联保！<br />
+            优势四：团购现场看车，讲解（车型+车险）无强制性消费！<br />
+            优势五：车源丰富，团购享受优先提车
+        </p>
+        <p><a href='@Url.Action("Car")' class="btn btn-success btn-lg" role="button">选择车辆</a></p>
+    </div>
 
     </div>
+    
 }
+
 else if (Model.ViewType == 1)
 {
 
@@ -89,9 +92,9 @@ else if (Model.ViewType == 1)
                 </div>
                 <div class="modal-footer">
                     @if (Session["Plate"] == null)
-{
-    <button class="btn btn-default" onclick="if(confirm('尚未选择车辆，是否跳转至选择车辆页？')) location.href='@Url.Action("Car")'; else return false;">购买</button>
-}
+                    {
+                        <button class="btn btn-default" onclick="if(confirm('尚未选择车辆，是否跳转至选择车辆页？')) location.href='@Url.Action("Car")'; else return false;">购买</button>
+                    }
                     else
                     {
                         <button class="btn btn-default" onclick='addGoods("{{= GOODSID}}");return false;'>购买</button>
@@ -109,9 +112,9 @@ else
         <div class="col-md-4">
             <div class="list-group">
                 @foreach (Goods item in Model.Goods)
-{
-    <a href="#" class="list-group-item" onclick='showGoods({GOODSNAME:"@item.GOODSNAME",GOODSID:"@item.GOODSID",IMAGEURL:"@item.IMAGEURL",REMARKS:"@item.REMARKS",SALEPRICE:"@item.SALEPRICE"},this);'>@item.GOODSNAME</a>
-}
+                {
+                    <a href="#" class="list-group-item" onclick='showGoods({GOODSNAME:"@item.GOODSNAME",GOODSID:"@item.GOODSID",IMAGEURL:"@item.IMAGEURL",REMARKS:"@item.REMARKS",SALEPRICE:"@item.SALEPRICE"},this);'>@item.GOODSNAME</a>
+                }
             </div>
 
         </div>
@@ -121,7 +124,6 @@ else
 
                     <div class="row">
                         <div class="col-sm-12 col-md-12" id="content">
-                            
                         </div>
                     </div>
 
@@ -129,23 +131,24 @@ else
             </div>
         </div>
     </div>
-
+  
+    <!-- /.modal -->
     <script id="goodsTmp" type="text/x-jquery-tmpl">
         <div class="thumbnail">
             <img style="width: 500px; height: 400px;" data-src="holder.js/300x200" src="{{= IMAGEURL}}" alt="...">
             <div class="caption">
                 <h3>价格：{{= SALEPRICE}}</h3>
                 <p>
-                   {{= REMARKS}}
+                    {{= REMARKS}}
                 </p>
                 <p>
                     @if (Session["Plate"] == null)
                     {
-                        <a href="#" class="btn btn-primary" onclick="if(confirm('尚未选择车辆，是否跳转至选择车辆页？')) location.href='@Url.Action("Car")'; else return false;">购买</a>
+                        <a href="#" class="btn btn-primary"  onclick="if(confirm('尚未选择车辆，是否跳转至选择车辆页？')) location.href='@Url.Action("Car")'; else return false;">购买</a>
                     }
                     else
                     {
-                        <a href="#" class="btn btn-primary" onclick='addGoods("{{= GOODSID}}");return false;'>购买</a>
+                        <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick='addGoods("{{= GOODSID}}");return false;'>购买</a>
                     }
                 </p>
             </div>
@@ -153,3 +156,37 @@ else
 
     </script>
 }
+<div class="modal fade" id="buyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">保存</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">临时价格</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputEmail3" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">销售人员</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" id="inputPassword3" >
+                        </div>
+                    </div>
+                     
+                     
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary">保存</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
