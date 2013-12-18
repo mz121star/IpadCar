@@ -39,12 +39,14 @@ namespace car.Controllers
             return View(tree);
         }
 
-        public ActionResult LoadGoods(string typeId, int? viewType)
+        public ActionResult LoadGoods(string typeId, int? viewType,int? pageIndex)
         {
+            var pIndex = pageIndex ?? 0;
             dynamic tree = new ExpandoObject();
-            var b = services.GetGoodsByTypeID(typeId).RESULT;
+            var b = services.GetGoodsByTypeID(typeId).RESULT.Skip(pIndex * 5).Take(5);
             tree.ViewType = viewType ?? 1;
             tree.Goods = b;
+            tree.PageIndex = pIndex;
             tree.User = ((LoginUserDto)Session["user"]).EMPLOYEENAME;
             return PartialView("Partial/_RightViewGrid", tree);
         }
