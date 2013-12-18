@@ -26,10 +26,11 @@
         }
     }
     
-    function loadGoods(pageIndex) {
+    function loadGoods(obj, pageIndex) {
+        $(obj).parent().parent().remove();
         $("#goodsContent").load('@Url.Action("LoadGoods")', { viewType: '@Model.ViewType', pageIndex: pageIndex });
        
-     }
+    }
 </script>
 @if (Model.ViewType == null)
 {<div class="row">
@@ -85,8 +86,8 @@ else if (Model.ViewType == 1)
     </div>
     <!-- /.modal -->
     <ul class="pager">
-    <li><a href="javascript:;" onclick="loadGoods(@(Model.PageIndex-1))" >Previous</a></li>
-    <li><a href="javascript:;" onclick="loadGoods(@(Model.PageIndex+1))">Next</a></li>
+    <li><a href="javascript:;" onclick="loadGoods(this,@(Model.PageIndex-1))" >Previous</a></li>
+    <li><a href="javascript:;" onclick="loadGoods(this,@(Model.PageIndex+1))">Next</a></li>
 </ul>
     <script id="goodsTmp" type="text/x-jquery-tmpl">
         <div class="modal-dialog">
