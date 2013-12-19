@@ -56,7 +56,14 @@ namespace car.DTO
     public class GoodsList
     {
         public IList<Goods> RESULT { get; set; }
+        public IList<PageInfo> PAGEINFO { get; set; }
+    }
 
+    public class PageInfo
+    {
+        public int TOTALCOUNT { get; set; }
+
+        public int PAGECOUNT { get; set; }
     }
 
     public class Goods

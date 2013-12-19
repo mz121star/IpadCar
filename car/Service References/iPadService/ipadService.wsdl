@@ -51,20 +51,6 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetGoodsByTypeID">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="strTypeID" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetGoodsByTypeIDResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetGoodsByTypeIDResult" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
       <s:element name="NewBill">
         <s:complexType>
           <s:sequence>
@@ -170,7 +156,7 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetGoodsByTypeIDWithPage">
+      <s:element name="GetGoodsByTypeID">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="strTypeID" type="s:string" />
@@ -180,10 +166,10 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetGoodsByTypeIDWithPageResponse">
+      <s:element name="GetGoodsByTypeIDResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetGoodsByTypeIDWithPageResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetGoodsByTypeIDResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -212,12 +198,6 @@
   </wsdl:message>
   <wsdl:message name="GetGoodsTypeByCategoryIDSoapOut">
     <wsdl:part name="parameters" element="tns:GetGoodsTypeByCategoryIDResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetGoodsByTypeIDSoapIn">
-    <wsdl:part name="parameters" element="tns:GetGoodsByTypeID" />
-  </wsdl:message>
-  <wsdl:message name="GetGoodsByTypeIDSoapOut">
-    <wsdl:part name="parameters" element="tns:GetGoodsByTypeIDResponse" />
   </wsdl:message>
   <wsdl:message name="NewBillSoapIn">
     <wsdl:part name="parameters" element="tns:NewBill" />
@@ -267,11 +247,11 @@
   <wsdl:message name="GetAllCarsSoapOut">
     <wsdl:part name="parameters" element="tns:GetAllCarsResponse" />
   </wsdl:message>
-  <wsdl:message name="GetGoodsByTypeIDWithPageSoapIn">
-    <wsdl:part name="parameters" element="tns:GetGoodsByTypeIDWithPage" />
+  <wsdl:message name="GetGoodsByTypeIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGoodsByTypeID" />
   </wsdl:message>
-  <wsdl:message name="GetGoodsByTypeIDWithPageSoapOut">
-    <wsdl:part name="parameters" element="tns:GetGoodsByTypeIDWithPageResponse" />
+  <wsdl:message name="GetGoodsByTypeIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGoodsByTypeIDResponse" />
   </wsdl:message>
   <wsdl:portType name="iPadServiceSoap">
     <wsdl:operation name="Authentication">
@@ -289,10 +269,6 @@
     <wsdl:operation name="GetGoodsTypeByCategoryID">
       <wsdl:input message="tns:GetGoodsTypeByCategoryIDSoapIn" />
       <wsdl:output message="tns:GetGoodsTypeByCategoryIDSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetGoodsByTypeID">
-      <wsdl:input message="tns:GetGoodsByTypeIDSoapIn" />
-      <wsdl:output message="tns:GetGoodsByTypeIDSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="NewBill">
       <wsdl:input message="tns:NewBillSoapIn" />
@@ -326,9 +302,9 @@
       <wsdl:input message="tns:GetAllCarsSoapIn" />
       <wsdl:output message="tns:GetAllCarsSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetGoodsByTypeIDWithPage">
-      <wsdl:input message="tns:GetGoodsByTypeIDWithPageSoapIn" />
-      <wsdl:output message="tns:GetGoodsByTypeIDWithPageSoapOut" />
+    <wsdl:operation name="GetGoodsByTypeID">
+      <wsdl:input message="tns:GetGoodsByTypeIDSoapIn" />
+      <wsdl:output message="tns:GetGoodsByTypeIDSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="iPadServiceSoap" type="tns:iPadServiceSoap">
@@ -362,15 +338,6 @@
     </wsdl:operation>
     <wsdl:operation name="GetGoodsTypeByCategoryID">
       <soap:operation soapAction="http://tempuri.org/GetGoodsTypeByCategoryID" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetGoodsByTypeID">
-      <soap:operation soapAction="http://tempuri.org/GetGoodsByTypeID" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -450,8 +417,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetGoodsByTypeIDWithPage">
-      <soap:operation soapAction="http://tempuri.org/GetGoodsByTypeIDWithPage" style="document" />
+    <wsdl:operation name="GetGoodsByTypeID">
+      <soap:operation soapAction="http://tempuri.org/GetGoodsByTypeID" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -491,15 +458,6 @@
     </wsdl:operation>
     <wsdl:operation name="GetGoodsTypeByCategoryID">
       <soap12:operation soapAction="http://tempuri.org/GetGoodsTypeByCategoryID" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetGoodsByTypeID">
-      <soap12:operation soapAction="http://tempuri.org/GetGoodsByTypeID" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -579,8 +537,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetGoodsByTypeIDWithPage">
-      <soap12:operation soapAction="http://tempuri.org/GetGoodsByTypeIDWithPage" style="document" />
+    <wsdl:operation name="GetGoodsByTypeID">
+      <soap12:operation soapAction="http://tempuri.org/GetGoodsByTypeID" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

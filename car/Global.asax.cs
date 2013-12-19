@@ -25,8 +25,8 @@ namespace car
 
             routes.MapRoute(
                 "Goods", // Route name
-                "Home/LoadGoods/{typeId}/{viewType}", // URL with parameters
-                new { controller = "Home", action = "LoadGoods", viewType = UrlParameter.Optional } // Parameter defaults
+                "Home/LoadGoods/{typeId}/{viewType}/{pageIndex}", // URL with parameters
+                new { controller = "Home", action = "LoadGoods", viewType = UrlParameter.Optional, pageIndex = UrlParameter.Optional } // Parameter defaults
             );
 
             routes.MapRoute(

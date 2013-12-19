@@ -112,72 +112,72 @@ namespace Redf.Business.WebService
             }
             return JsonConvert.SerializeObject(dsResult);
         }
-        /// <summary>
-        /// 根据二级分类编码获取商品信息
-        /// 返回结果：商品编码（GOODSID）、名称（GOODSNAME）、价格（SALEPRICE）、图片地址（IMAGEURL）
-        /// </summary>
-        /// <returns></returns>
-        [WebMethod]
-        public string GetGoodsByTypeID(string strTypeID)
-        {
-            DataSet dsResult = new DataSet();
-            dsResult.Tables.Add("RESULT");
-            dsResult.Tables[0].Columns.Add("GOODSID");
-            dsResult.Tables[0].Columns.Add("GOODSNAME");
-            dsResult.Tables[0].Columns.Add("SALEPRICE");
-            dsResult.Tables[0].Columns.Add("IMAGEURL");
-            dsResult.Tables[0].Columns.Add("REMARKS");
+        ///// <summary>
+        ///// 根据二级分类编码获取商品信息
+        ///// 返回结果：商品编码（GOODSID）、名称（GOODSNAME）、价格（SALEPRICE）、图片地址（IMAGEURL）
+        ///// </summary>
+        ///// <returns></returns>
+        //[WebMethod]
+        //public string GetGoodsByTypeID(string strTypeID)
+        //{
+        //    DataSet dsResult = new DataSet();
+        //    dsResult.Tables.Add("RESULT");
+        //    dsResult.Tables[0].Columns.Add("GOODSID");
+        //    dsResult.Tables[0].Columns.Add("GOODSNAME");
+        //    dsResult.Tables[0].Columns.Add("SALEPRICE");
+        //    dsResult.Tables[0].Columns.Add("IMAGEURL");
+        //    dsResult.Tables[0].Columns.Add("REMARKS");
 
-            if (strTypeID == "TRI_6ca92e09985d2566")
-            {
-                dsResult.Tables[0].Rows.Add(new object[] { "TRI_ac40c20f9e59ac18", "CD水", 80.00, "image01.jpg", "关于商品的描述" });
-                dsResult.Tables[0].Rows.Add(new object[] { "TRI_f1bd864e91f106e2", "香儿香水", 300.00, "image02.jpg", "关于商品的描述" });
-            }
-            else if (strTypeID == "TRI_b4b6eb9bb6ebe56a")
-            {
-                dsResult.Tables[0].Rows.Add(new object[] { "TRI_ac40c30j9e59ac18", "防滑垫A", 198.00, "image01.jpg", "关于商品的描述" });
-                dsResult.Tables[0].Rows.Add(new object[] { "TRI_f1bd587e91f106e2", "防滑垫B", 120.00, "image02.jpg", "关于商品的描述" });
-            }
-            else if (strTypeID == "TRI_6ca92e09985d2013")
-            {
-                dsResult.Tables[0].Rows.Add(new object[] { "TRI_ac40c30j54g9ac18", "发动机大修", 980.00, "image01.jpg", "关于商品的描述" });
-                dsResult.Tables[0].Rows.Add(new object[] { "TRI_23fd587e91f106e2", "发动机保养", 1200.00, "image02.jpg", "关于商品的描述" });
-            }
-            else if (strTypeID == "TRI_b4b6eb9bb6ebe59b")
-            {
-                dsResult.Tables[0].Rows.Add(new object[] { "TRI_ac40c323fdg9ac18", "变速箱修理", 350.00, "image01.jpg", "关于商品的描述" });
-                dsResult.Tables[0].Rows.Add(new object[] { "TRI_23457dsa91f106e2", "换变速箱油", 3000.00, "image02.jpg", "关于商品的描述" });
-            }
-            else if (strTypeID == "TRI_6ca92e09856d2013")
-            {
-                dsResult.Tables[0].Rows.Add(new object[] { "TRI_ac40casfse59ac18", "钣金车门", 100.00, "image01.jpg", "关于商品的描述" });
-                dsResult.Tables[0].Rows.Add(new object[] { "TRI_f1bd58fd912306e2", "钣金保险杠", 490.00, "image02.jpg", "关于商品的描述" });
-            }
-            else if (strTypeID == "TRI_b4j5kb9bb6ebe56a")
-            {
-                dsResult.Tables[0].Rows.Add(new object[] { "TRI_ac40csa57eg9ac18", "穿大褂", 1000.00, "image01.jpg", "关于商品的描述" });
-                dsResult.Tables[0].Rows.Add(new object[] { "TRI_23fd587e91f106e2", "喷车顶", 700.00, "image02.jpg", "关于商品的描述" });
-            }
-            else if (strTypeID == "TRI_6ca92e02356d2013")
-            {
-                dsResult.Tables[0].Rows.Add(new object[] { "TRI_ac4iohf2454sac18", "贴全车膜", 4500.00, "image01.jpg", "关于商品的描述" });
-                dsResult.Tables[0].Rows.Add(new object[] { "TRI_23fst4safsa106e2", "贴前挡膜", 900.00, "image02.jpg", "关于商品的描述" });
-            }
-            else if (strTypeID == "TRI_b4j5kb0nb6ebe56a")
-            {
-                dsResult.Tables[0].Rows.Add(new object[] { "TRI_ac409823fd014c18", "韩泰轮胎", 350.00, "http://image.cn.made-in-china.com/2f0j01SMotQUfBhhkm/%E4%B8%9C%E6%B4%8B%E8%BD%AE%E8%83%8E.jpg", "关于商品的描述" });
-                dsResult.Tables[0].Rows.Add(new object[] { "TRI_23457d454suy06e2", "耐跑轮胎", 550.00, "http://pic1a.nipic.com/2008-10-09/200810915533125_2.jpg", "关于商品的描述" });
-                dsResult.Tables[0].Rows.Add(new object[] { "TRI_23fds0454suy06e2", "A轮胎", 550.00, "http://i3.sinaimg.cn/qc/2011/0406/U5272P33DT20110406155042.jpg", "关于商品的描述" });
-                dsResult.Tables[0].Rows.Add(new object[] { "TRI_23457d454suy06e2", "B轮胎", 550.00, "http://se.risechina.org/kjgj/UploadFiles_3299/200812/2008120910102166.jpg", "关于商品的描述" });
-                dsResult.Tables[0].Rows.Add(new object[] { "TRI_sftf7d454suy06e2", "C轮胎", 550.00, "http://www.btqcc.com/uploadfiles/product/ee3cfa192e9fc7e74ab2d8a01b76bf6a.jpg", "关于商品的描述" });
-                dsResult.Tables[0].Rows.Add(new object[] { "TRI_23457d454sfyy6e2", "D轮胎", 550.00, "http://a4.att.hudong.com/67/38/01300000196604122354384014076.jpg", "关于商品的描述" });
-                dsResult.Tables[0].Rows.Add(new object[] { "TRI_23457dfdsaq06we2", "E轮胎", 550.00, "http://pic3.nipic.com/20090508/2232422_085944008_2.jpg", "关于商品的描述" });
-                dsResult.Tables[0].Rows.Add(new object[] { "TRI_23457d454sufsa35", "F轮胎", 550.00, "http://image.zcool.com.cn/35/25/m_1247455340221.jpg", "关于商品的描述" });
-                dsResult.Tables[0].Rows.Add(new object[] { "TRI_2345ffds4587ssfw", "G轮胎", 550.00, "http://www.iconpng.com/png/desktop-icons/wheel.png", "关于商品的描述" });
-            }
+        //    if (strTypeID == "TRI_6ca92e09985d2566")
+        //    {
+        //        dsResult.Tables[0].Rows.Add(new object[] { "TRI_ac40c20f9e59ac18", "CD水", 80.00, "image01.jpg", "关于商品的描述" });
+        //        dsResult.Tables[0].Rows.Add(new object[] { "TRI_f1bd864e91f106e2", "香儿香水", 300.00, "image02.jpg", "关于商品的描述" });
+        //    }
+        //    else if (strTypeID == "TRI_b4b6eb9bb6ebe56a")
+        //    {
+        //        dsResult.Tables[0].Rows.Add(new object[] { "TRI_ac40c30j9e59ac18", "防滑垫A", 198.00, "image01.jpg", "关于商品的描述" });
+        //        dsResult.Tables[0].Rows.Add(new object[] { "TRI_f1bd587e91f106e2", "防滑垫B", 120.00, "image02.jpg", "关于商品的描述" });
+        //    }
+        //    else if (strTypeID == "TRI_6ca92e09985d2013")
+        //    {
+        //        dsResult.Tables[0].Rows.Add(new object[] { "TRI_ac40c30j54g9ac18", "发动机大修", 980.00, "image01.jpg", "关于商品的描述" });
+        //        dsResult.Tables[0].Rows.Add(new object[] { "TRI_23fd587e91f106e2", "发动机保养", 1200.00, "image02.jpg", "关于商品的描述" });
+        //    }
+        //    else if (strTypeID == "TRI_b4b6eb9bb6ebe59b")
+        //    {
+        //        dsResult.Tables[0].Rows.Add(new object[] { "TRI_ac40c323fdg9ac18", "变速箱修理", 350.00, "image01.jpg", "关于商品的描述" });
+        //        dsResult.Tables[0].Rows.Add(new object[] { "TRI_23457dsa91f106e2", "换变速箱油", 3000.00, "image02.jpg", "关于商品的描述" });
+        //    }
+        //    else if (strTypeID == "TRI_6ca92e09856d2013")
+        //    {
+        //        dsResult.Tables[0].Rows.Add(new object[] { "TRI_ac40casfse59ac18", "钣金车门", 100.00, "image01.jpg", "关于商品的描述" });
+        //        dsResult.Tables[0].Rows.Add(new object[] { "TRI_f1bd58fd912306e2", "钣金保险杠", 490.00, "image02.jpg", "关于商品的描述" });
+        //    }
+        //    else if (strTypeID == "TRI_b4j5kb9bb6ebe56a")
+        //    {
+        //        dsResult.Tables[0].Rows.Add(new object[] { "TRI_ac40csa57eg9ac18", "穿大褂", 1000.00, "image01.jpg", "关于商品的描述" });
+        //        dsResult.Tables[0].Rows.Add(new object[] { "TRI_23fd587e91f106e2", "喷车顶", 700.00, "image02.jpg", "关于商品的描述" });
+        //    }
+        //    else if (strTypeID == "TRI_6ca92e02356d2013")
+        //    {
+        //        dsResult.Tables[0].Rows.Add(new object[] { "TRI_ac4iohf2454sac18", "贴全车膜", 4500.00, "image01.jpg", "关于商品的描述" });
+        //        dsResult.Tables[0].Rows.Add(new object[] { "TRI_23fst4safsa106e2", "贴前挡膜", 900.00, "image02.jpg", "关于商品的描述" });
+        //    }
+        //    else if (strTypeID == "TRI_b4j5kb0nb6ebe56a")
+        //    {
+        //        dsResult.Tables[0].Rows.Add(new object[] { "TRI_ac409823fd014c18", "韩泰轮胎", 350.00, "http://image.cn.made-in-china.com/2f0j01SMotQUfBhhkm/%E4%B8%9C%E6%B4%8B%E8%BD%AE%E8%83%8E.jpg", "关于商品的描述" });
+        //        dsResult.Tables[0].Rows.Add(new object[] { "TRI_23457d454suy06e2", "耐跑轮胎", 550.00, "http://pic1a.nipic.com/2008-10-09/200810915533125_2.jpg", "关于商品的描述" });
+        //        dsResult.Tables[0].Rows.Add(new object[] { "TRI_23fds0454suy06e2", "A轮胎", 550.00, "http://i3.sinaimg.cn/qc/2011/0406/U5272P33DT20110406155042.jpg", "关于商品的描述" });
+        //        dsResult.Tables[0].Rows.Add(new object[] { "TRI_23457d454suy06e2", "B轮胎", 550.00, "http://se.risechina.org/kjgj/UploadFiles_3299/200812/2008120910102166.jpg", "关于商品的描述" });
+        //        dsResult.Tables[0].Rows.Add(new object[] { "TRI_sftf7d454suy06e2", "C轮胎", 550.00, "http://www.btqcc.com/uploadfiles/product/ee3cfa192e9fc7e74ab2d8a01b76bf6a.jpg", "关于商品的描述" });
+        //        dsResult.Tables[0].Rows.Add(new object[] { "TRI_23457d454sfyy6e2", "D轮胎", 550.00, "http://a4.att.hudong.com/67/38/01300000196604122354384014076.jpg", "关于商品的描述" });
+        //        dsResult.Tables[0].Rows.Add(new object[] { "TRI_23457dfdsaq06we2", "E轮胎", 550.00, "http://pic3.nipic.com/20090508/2232422_085944008_2.jpg", "关于商品的描述" });
+        //        dsResult.Tables[0].Rows.Add(new object[] { "TRI_23457d454sufsa35", "F轮胎", 550.00, "http://image.zcool.com.cn/35/25/m_1247455340221.jpg", "关于商品的描述" });
+        //        dsResult.Tables[0].Rows.Add(new object[] { "TRI_2345ffds4587ssfw", "G轮胎", 550.00, "http://www.iconpng.com/png/desktop-icons/wheel.png", "关于商品的描述" });
+        //    }
 
-            return JsonConvert.SerializeObject(dsResult);
-        }
+        //    return JsonConvert.SerializeObject(dsResult);
+        //}
         ///// <summary>
         ///// 保存账单信息
         ///// 上传数据中账单主表包括：单据编码(SALESID)、车牌照号(PLATE)、接待人编码(EMPLOYEEID,就是当前登录人)
@@ -448,7 +448,7 @@ namespace Redf.Business.WebService
         /// </summary>
         /// <returns></returns>
         [WebMethod]
-        public string GetGoodsByTypeIDWithPage(string strTypeID, string strBrand, string strCars, string strPages)
+        public string GetGoodsByTypeID(string strTypeID, string strBrand, string strCars, string strPages)
         {
             DataSet dsResult = new DataSet();
             dsResult.Tables.Add("RESULT");
@@ -456,7 +456,11 @@ namespace Redf.Business.WebService
             dsResult.Tables[0].Columns.Add("GOODSNAME");
             dsResult.Tables[0].Columns.Add("SALEPRICE");
             dsResult.Tables[0].Columns.Add("IMAGEURL");
-            dsResult.Tables[0].Columns.Add("REMARKS");
+            dsResult.Tables[0].Columns.Add("REMARK");
+
+            dsResult.Tables.Add("PAGEINFO");
+            dsResult.Tables[1].Columns.Add("TOTALCOUNT");
+            dsResult.Tables[1].Columns.Add("PAGECOUNT");
 
             if (strTypeID == "TRI_6ca92e09985d2566")
             {
@@ -495,7 +499,19 @@ namespace Redf.Business.WebService
             }
             else if (strTypeID == "TRI_b4j5kb0nb6ebe56a")
             {
-                if (strPages == "1")
+                if (strPages == "0")
+                {
+                    dsResult.Tables[0].Rows.Add(new object[] { "TRI_ac409823fd014c18", "韩泰轮胎", 350.00, "http://image.cn.made-in-china.com/2f0j01SMotQUfBhhkm/%E4%B8%9C%E6%B4%8B%E8%BD%AE%E8%83%8E.jpg", "关于商品的描述" });
+                    dsResult.Tables[0].Rows.Add(new object[] { "TRI_23457d454suy06e2", "耐跑轮胎", 550.00, "http://pic1a.nipic.com/2008-10-09/200810915533125_2.jpg", "关于商品的描述" });
+                    dsResult.Tables[0].Rows.Add(new object[] { "TRI_23fds0454suy06e2", "A轮胎", 550.00, "http://i3.sinaimg.cn/qc/2011/0406/U5272P33DT20110406155042.jpg", "关于商品的描述" });
+                    dsResult.Tables[0].Rows.Add(new object[] { "TRI_23457d454suy06e2", "B轮胎", 550.00, "http://se.risechina.org/kjgj/UploadFiles_3299/200812/2008120910102166.jpg", "关于商品的描述" });
+                    dsResult.Tables[0].Rows.Add(new object[] { "TRI_sftf7d454suy06e2", "C轮胎", 550.00, "http://www.btqcc.com/uploadfiles/product/ee3cfa192e9fc7e74ab2d8a01b76bf6a.jpg", "关于商品的描述" });
+                    dsResult.Tables[0].Rows.Add(new object[] { "TRI_23457d454sfyy6e2", "D轮胎", 550.00, "http://a4.att.hudong.com/67/38/01300000196604122354384014076.jpg", "关于商品的描述" });
+                    dsResult.Tables[0].Rows.Add(new object[] { "TRI_23457dfdsaq06we2", "E轮胎", 550.00, "http://pic3.nipic.com/20090508/2232422_085944008_2.jpg", "关于商品的描述" });
+                    dsResult.Tables[0].Rows.Add(new object[] { "TRI_23457d454sufsa35", "F轮胎", 550.00, "http://image.zcool.com.cn/35/25/m_1247455340221.jpg", "关于商品的描述" });
+                    dsResult.Tables[0].Rows.Add(new object[] { "TRI_2345ffds4587ssfw", "G轮胎", 550.00, "http://www.iconpng.com/png/desktop-icons/wheel.png", "关于商品的描述" });
+                }
+                else if (strPages == "1")
                 {
                     dsResult.Tables[0].Rows.Add(new object[] { "TRI_ac409823fd014c18", "韩泰轮胎", 350.00, "http://image.cn.made-in-china.com/2f0j01SMotQUfBhhkm/%E4%B8%9C%E6%B4%8B%E8%BD%AE%E8%83%8E.jpg", "关于商品的描述" });
                     dsResult.Tables[0].Rows.Add(new object[] { "TRI_23457d454suy06e2", "耐跑轮胎", 550.00, "http://pic1a.nipic.com/2008-10-09/200810915533125_2.jpg", "关于商品的描述" });
@@ -511,6 +527,8 @@ namespace Redf.Business.WebService
                     dsResult.Tables[0].Rows.Add(new object[] { "TRI_2345ffds4587ssfw", "G轮胎", 550.00, "http://www.iconpng.com/png/desktop-icons/wheel.png", "关于商品的描述" });
                 }
             }
+            dsResult.Tables[1].Rows.Add(new object[] { 20, 6 });
+
 
             return JsonConvert.SerializeObject(dsResult);
         }

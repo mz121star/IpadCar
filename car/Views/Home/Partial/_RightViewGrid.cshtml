@@ -5,12 +5,6 @@
 <script>
     function showGoodsConfirm(goodsId, salesPrice) {
         $('#confirmContainer').html($('#confirmBuy').tmpl({ goodsId: goodsId, salesPrice: salesPrice, salesMan: '@Model.User', plate: '@(Session["plate"])' }))
-        @*if(confirm('确定要为<@(Session["plate"])>购买吗？'))
-        {
-            $.post('@Url.Action("AddGoods")',{goodsId:goodsId},function(data){
-                alert(data.MESSAGE);
-            });
-        }*@
     };
 
     function addGoods(goodsId) {
@@ -24,12 +18,6 @@
         if (ele != undefined) {
             $(ele).siblings().removeClass("active").end().addClass("active");
         }
-    }
-    
-    function loadGoods(obj, pageIndex) {
-        $(obj).parent().parent().remove();
-        $("#goodsContent").load('@Url.Action("LoadGoods")', { viewType: '@Model.ViewType', pageIndex: pageIndex });
-       
     }
 </script>
 @if (Model.ViewType == null)
@@ -53,7 +41,7 @@ else if (Model.ViewType == 1)
 {
 
     <div class="row" id="goodsContent">
-        @foreach (Goods item in Model.Goods)
+        @foreach (Goods item in Model.Goods.RESULT)
         {
             <div class="col-sm-6 col-md-3">
                 <a href="#" class="thumbnail" data-toggle="modal" data-target="#content" onclick='showGoods({ GOODSNAME: "@item.GOODSNAME", GOODSID: "@item.GOODSID", IMAGEURL: "@item.IMAGEURL", REMARKS: "@item.REMARKS", SALEPRICE: "@item.SALEPRICE" })'>
@@ -76,7 +64,7 @@ else if (Model.ViewType == 1)
                     </p>
                 </div>
             </div>
-        
+
         }
     </div>
 
@@ -86,9 +74,25 @@ else if (Model.ViewType == 1)
     </div>
     <!-- /.modal -->
     <ul class="pager">
-    <li><a href="javascript:;" onclick="loadGoods(this,@(Model.PageIndex-1))" >Previous</a></li>
-    <li><a href="javascript:;" onclick="loadGoods(this,@(Model.PageIndex+1))">Next</a></li>
-</ul>
+        <li>
+            @if (Model.PageIndex == 1)
+            {
+            <a href='void(0);' style="color:gray" onclick="return false;">Previous</a>
+                }else{ 
+            <a id="btnPrev" data-ajax="true" href='@Url.Action("LoadGoods", new { viewType = Model.ViewType , pageIndex = Model.PageIndex - 1 })' onclick="return loadGoods(this);">Previous</a>
+            }
+        </li>
+        <li>
+            @if (Math.Ceiling(Convert.ToDouble(Model.Goods.PAGEINFO[0].TOTALCOUNT) /  Convert.ToDouble(Model.Goods.PAGEINFO[0].PAGECOUNT)) <= Model.PageIndex)
+            {
+                <a href='void(0);' style="color:gray" onclick="return false;">Next</a>
+            }
+            else
+            {
+<a id="btnNext" data-ajax="true" href='@Url.Action("LoadGoods", new { viewType = Model.ViewType, pageIndex = Model.PageIndex + 1 })' onclick="return loadGoods(this);">Next</a>
+            }
+        </li>
+    </ul>
     <script id="goodsTmp" type="text/x-jquery-tmpl">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -112,11 +116,11 @@ else if (Model.ViewType == 1)
                     }
                     <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
                 </div>
-             
+
             </div>
             <!-- /.modal-content -->
         </div>
-    
+
     </script>
 }
 else
@@ -124,7 +128,7 @@ else
     <div class="row">
         <div class="col-md-4">
             <div class="list-group">
-                @foreach (Goods item in Model.Goods)
+                @foreach (Goods item in Model.Goods.RESULT)
                 {
                     <a href="#" class="list-group-item" onclick='showGoods({GOODSNAME:"@item.GOODSNAME",GOODSID:"@item.GOODSID",IMAGEURL:"@item.IMAGEURL",REMARKS:"@item.REMARKS",SALEPRICE:"@item.SALEPRICE"},this);'>@item.GOODSNAME</a>
                 }
@@ -163,7 +167,7 @@ else
                 </p>
             </div>
         </div>
-       
+
     </script>
 }
 <!-- Modal -->

@@ -3,12 +3,22 @@
         $(ele).closest("#left").find("li").removeClass("active"); $(ele).parent().addClass("active");
         var isAjax = $(ele).data('ajax');
         if (isAjax) {
-            $.post($(ele).attr('href'), function (data) { $("#right").html(data) });
+            $.post($(ele).attr('href'), function (data) { $("#right").html(data); });
             return false;
         }
         return true;
     }
 
+    function loadGoods(ele) {
+        var isAjax = $(ele).data('ajax');
+        if (isAjax) {
+            $.post($(ele).attr('href'), function (data) {
+                $("#right").html(data);
+            });
+            return false;
+        }
+        return true;
+    }
 
 </script>
 @using car.DTO;

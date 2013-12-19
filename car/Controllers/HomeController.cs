@@ -39,12 +39,17 @@ namespace car.Controllers
             return View(tree);
         }
 
-        public ActionResult LoadGoods(string typeId, int? viewType,int? pageIndex)
+        public ActionResult LoadGoods(string typeId, int? viewType, int? pageIndex)
         {
-            var pIndex = pageIndex ?? 0;
+            var pIndex = pageIndex ?? 1;
             dynamic tree = new ExpandoObject();
-            var b = services.GetGoodsByTypeID(typeId).RESULT.Skip(pIndex * 5).Take(5);
-            tree.ViewType = viewType ?? 1;
+            viewType = viewType ?? 1;
+            if (viewType == 2)
+            {
+                pIndex = 0;
+            }
+            var b = services.GetGoodsByTypeIDWithPage(typeId, "", "", pIndex.ToString());
+            tree.ViewType = viewType;
             tree.Goods = b;
             tree.PageIndex = pIndex;
             tree.User = ((LoginUserDto)Session["user"]).EMPLOYEENAME;
