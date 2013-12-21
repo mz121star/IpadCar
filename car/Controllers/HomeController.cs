@@ -40,13 +40,15 @@ namespace car.Controllers
             {
                 tree.User = "";
             }
-            tree.Brand = services.GetAllBrand().RESULT;
+            tree.Brands = services.GetAllBrand().RESULT;
             tree.Cars = services.GetAllCars().RESULT;
 
+            tree.Brand = null;
+            tree.Car = null;
             return View(tree);
         }
 
-        public ActionResult LoadGoods(string typeId, int? viewType, int? pageIndex)
+        public ActionResult LoadGoods(string typeId, string brand, string car, int? viewType, int? pageIndex)
         {
             var pIndex = pageIndex ?? 1;
             dynamic tree = new ExpandoObject();
@@ -55,10 +57,15 @@ namespace car.Controllers
             {
                 pIndex = 0;
             }
+            brand = brand ?? "";
+            car = car ?? "";
             var b = services.GetGoodsByTypeIDWithPage(typeId, "", "", pIndex.ToString());
             tree.ViewType = viewType;
             tree.Goods = b;
             tree.PageIndex = pIndex;
+            tree.TypeId = typeId;
+            tree.Brand = brand;
+            tree.Car = car;
             tree.User = ((LoginUserDto)Session["user"]).EMPLOYEENAME;
             return PartialView("Partial/_RightViewGrid", tree);
         }

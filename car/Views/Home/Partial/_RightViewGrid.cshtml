@@ -39,7 +39,28 @@
 
 else if (Model.ViewType == 1)
 {
-
+    <script>
+        $(function () {
+            var typeId = '@Model.TypeId';
+            var viewType = '@Model.ViewType';
+            $("#brandSelect").off("change");
+            $("#carSelect").off("change");
+            $("#brandSelect").on("change", function () {
+                var brand = $("#brandSelect").val();
+                var car = $("#carSelect").val();
+                $.post('@Url.Action("LoadGoods")', { typeId: typeId, viewType: viewType, brand: brand, car: car, pageIndex: 1 }, function (data) {
+                    $("#right").html(data);
+                });
+            })
+            $("#carSelect").on("change", function () {
+                var brand = $("#brandSelect").val();
+                var car = $("#carSelect").val();
+                $.post('@Url.Action("LoadGoods")', { typeId: typeId, viewType: viewType, brand: brand, car: car, pageIndex: 1 }, function (data) {
+                    $("#right").html(data);
+                });
+            })
+        });
+    </script>
     <div class="row" id="goodsContent">
         @foreach (Goods item in Model.Goods.RESULT)
         {
@@ -77,19 +98,21 @@ else if (Model.ViewType == 1)
         <li>
             @if (Model.PageIndex == 1)
             {
-            <a href='void(0);' style="color:gray" onclick="return false;">Previous</a>
-                }else{ 
-            <a id="btnPrev" data-ajax="true" href='@Url.Action("LoadGoods", new { viewType = Model.ViewType , pageIndex = Model.PageIndex - 1 })' onclick="return loadGoods(this);">Previous</a>
+                <a href='void(0);' style="color:gray" onclick="return false;">Previous</a>
+            }
+            else
+            {
+                <a id="btnPrev" data-ajax="true" href='@Url.Action("LoadGoods", new { viewType = Model.ViewType, pageIndex = Model.PageIndex - 1, brand = Model.Brand, car = Model.Car })' onclick="return loadGoods(this);">Previous</a>
             }
         </li>
         <li>
-            @if (Math.Ceiling(Convert.ToDouble(Model.Goods.PAGEINFO[0].TOTALCOUNT) /  Convert.ToDouble(Model.Goods.PAGEINFO[0].PAGECOUNT)) <= Model.PageIndex)
+            @if (Math.Ceiling(Convert.ToDouble(Model.Goods.PAGEINFO[0].TOTALCOUNT) / Convert.ToDouble(Model.Goods.PAGEINFO[0].PAGECOUNT)) <= Model.PageIndex)
             {
                 <a href='void(0);' style="color:gray" onclick="return false;">Next</a>
             }
             else
             {
-<a id="btnNext" data-ajax="true" href='@Url.Action("LoadGoods", new { viewType = Model.ViewType, pageIndex = Model.PageIndex + 1 })' onclick="return loadGoods(this);">Next</a>
+                <a id="btnNext" data-ajax="true" href='@Url.Action("LoadGoods", new { viewType = Model.ViewType, pageIndex = Model.PageIndex + 1, brand = Model.Brand, car = Model.Car })' onclick="return loadGoods(this);">Next</a>
             }
         </li>
     </ul>
@@ -125,6 +148,28 @@ else if (Model.ViewType == 1)
 }
 else
 {
+    <script>
+        $(function () {
+            var typeId = '@Model.TypeId';
+            var viewType = '@Model.ViewType';
+            $("#brandSelect").off("change");
+            $("#carSelect").off("change");
+            $("#brandSelect").on("change", function () {
+                var brand = $("#brandSelect").val();
+                var car = $("#carSelect").val();
+                $.post('@Url.Action("LoadGoods")' , { typeId: typeId, viewType: viewType, brand: brand, car: car ,pageIndex :1}, function (data) {
+                    $("#right").html(data);
+                });
+            })
+            $("#carSelect").on("change", function () {
+                var brand = $("#brandSelect").val();
+                var car = $("#carSelect").val();
+                $.post('@Url.Action("LoadGoods")', { typeId: typeId, viewType: viewType, brand: brand, car: car, pageIndex: 1 }, function (data) {
+                    $("#right").html(data);
+                });
+            })
+        });
+    </script>
     <div class="row">
         <div class="col-md-4">
             <div class="list-group">

@@ -2,6 +2,8 @@
     function LoadGoods(ele) {
         $(ele).closest("#left").find("li").removeClass("active"); $(ele).parent().addClass("active");
         var isAjax = $(ele).data('ajax');
+        $("#carSelect").val("");
+        $("#brandSelect").val("");
         if (isAjax) {
             $.post($(ele).attr('href'), function (data) { $("#right").html(data); });
             return false;
@@ -19,7 +21,6 @@
         }
         return true;
     }
-
 </script>
 @using car.DTO;
 @using System.Web.Mvc.Html;
@@ -30,9 +31,9 @@
             <b>品牌</b>
         </div>
         <div class="btn-group">
-            <select class="form-control">
+            <select id="brandSelect" class="form-control">
                 <option value="">请选择品牌</option>
-                @foreach (var brand in Model.Brand)
+                @foreach (var brand in Model.Brands)
                 {
                     <option value="@brand.BRAND">@brand.BRAND</option>
                 }
@@ -42,7 +43,7 @@
             <b>车型</b>
 </div>
         <div class="btn-group">
-            <select class="form-control">
+            <select id="carSelect" class="form-control">
                 <option value="">请选择车型</option>
                 @foreach (var car in Model.Cars)
                 {
@@ -87,7 +88,7 @@
                                         {
                                             <li>
                                                 @Html.ActionLink(second.GOODSTYPENAME, "LoadGoods", new { typeId = second.GOODSTYPEID, viewType = Html.ViewContext.RouteData.Values["viewType"] },
-                                                                 new { onclick = "return LoadGoods(this);", @class = "list", data_ajax = true })
+                                                                  new { onclick = "return LoadGoods(this);", @class = "list", data_ajax = true })
                                             </li>
                                         }
                                     </ul>
