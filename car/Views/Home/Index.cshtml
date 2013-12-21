@@ -31,7 +31,7 @@
         </div>
         <div class="btn-group">
             <select class="form-control">
-                <option value="">请选择车型</option>
+                <option value="">请选择品牌</option>
                 @foreach (var brand in Model.Brand)
                 {
                     <option value="@brand.BRAND">@brand.BRAND</option>
@@ -43,7 +43,7 @@
 </div>
         <div class="btn-group">
             <select class="form-control">
-                <option value="">请选择品牌</option>
+                <option value="">请选择车型</option>
                 @foreach (var car in Model.Cars)
                 {
                     <option value="@car.CARS">@car.CARS</option>
@@ -74,7 +74,7 @@
                             var id = item.GOODSCATEGORYID;
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                                    <i class="fa fa-plus-square"></i> <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapseOne@(id)">
+                                    <i class="fa fa-plus-square"></i> <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne@(id)">
                                         @item.GOODSCATEGORYNAME
                                     </a>
                                 </h4>
