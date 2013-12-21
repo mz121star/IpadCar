@@ -59,7 +59,7 @@ namespace car.Controllers
             }
             brand = brand ?? "";
             car = car ?? "";
-            var b = services.GetGoodsByTypeIDWithPage(typeId, "", "", pIndex.ToString());
+            var b = services.GetGoodsByTypeIDWithPage(typeId, brand, car, pIndex.ToString());
             tree.ViewType = viewType;
             tree.Goods = b;
             tree.PageIndex = pIndex;
