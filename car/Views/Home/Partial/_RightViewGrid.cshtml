@@ -192,6 +192,28 @@ else
             </div>
         </div>
     </div>
+     <ul class="pager">
+        <li>
+            @if (Model.PageIndex == 1)
+            {
+                <a href='void(0);' style="color:gray" onclick="return false;">Previous</a>
+            }
+            else
+            {
+                <a id="btnPrev" data-ajax="true" href='@Url.Action("LoadGoods", new { viewType = Model.ViewType, pageIndex = Model.PageIndex - 1, brand = Model.Brand, car = Model.Car })' onclick="return loadGoods(this);">Previous</a>
+            }
+        </li>
+        <li>
+            @if (Math.Ceiling(Convert.ToDouble(Model.Goods.PAGEINFO[0].TOTALCOUNT) / Convert.ToDouble(Model.Goods.PAGEINFO[0].PAGECOUNT)) <= Model.PageIndex)
+            {
+                <a href='void(0);' style="color:gray" onclick="return false;">Next</a>
+            }
+            else
+            {
+                <a id="btnNext" data-ajax="true" href='@Url.Action("LoadGoods", new { viewType = Model.ViewType, pageIndex = Model.PageIndex + 1, brand = Model.Brand, car = Model.Car })' onclick="return loadGoods(this);">Next</a>
+            }
+        </li>
+    </ul>
 
     <!-- /.modal -->
     <script id="goodsTmp" type="text/x-jquery-tmpl">

@@ -53,10 +53,10 @@ namespace car.Controllers
             var pIndex = pageIndex ?? 1;
             dynamic tree = new ExpandoObject();
             viewType = viewType ?? 1;
-            if (viewType == 2)
-            {
-                pIndex = 0;
-            }
+            //if (viewType == 2)
+            //{
+            //    pIndex = 0;
+            //}
             brand = brand ?? "";
             car = car ?? "";
             var b = services.GetGoodsByTypeIDWithPage(typeId, brand, car, pIndex.ToString());
