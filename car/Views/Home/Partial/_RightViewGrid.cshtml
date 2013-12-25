@@ -64,10 +64,10 @@ else if (Model.ViewType == 1)
     <div class="row" id="goodsContent">
         @foreach (Goods item in Model.Goods.RESULT)
         {
-            <div class="col-sm-6 col-md-3">
+            <div class="col-sm-6 col-md-4">
                 <a href="#" class="thumbnail" data-toggle="modal" data-target="#content" onclick='showGoods({ GOODSNAME: "@item.GOODSNAME", GOODSID: "@item.GOODSID", IMAGEURL: "@item.IMAGEURL", REMARKS: "@item.REMARKS", SALEPRICE: "@item.SALEPRICE" })'>
                     <img data-src="holder.js/300x200" alt="300x200" src="@item.IMAGEURL"
-                         style="width: 300px; height: 200px;">
+                         style="width: 200px; height: 300px;">
                 </a>
                 <div class="caption">
                     <h3>@item.GOODSNAME</h3>
@@ -124,7 +124,7 @@ else if (Model.ViewType == 1)
                     <h4 class="modal-title" id="myModalLabel">{{= GOODSNAME}}</h4>
                 </div>
                 <div class="modal-body">
-                    <img src='{{= IMAGEURL}}'   />
+                    <img src='{{= IMAGEURL}}' style="width: 200px; height: 30rem; " />
                     <p>价格：{{= SALEPRICE}}</p>
                     <p>{{= REMARKS}}</p>
                 </div>
@@ -194,7 +194,7 @@ else
     <!-- /.modal -->
     <script id="goodsTmp" type="text/x-jquery-tmpl">
         <div class="thumbnail">
-            <img style="width: 500px; height: 400px;" data-src="holder.js/300x200" src="{{= IMAGEURL}}" alt="...">
+            <img style="width: 200px; height: 300px; " data-src="holder.js/300x200" src="{{= IMAGEURL}}" alt="...">
             <div class="caption">
                 <h3>价格：{{= SALEPRICE}}</h3>
                 <p>

@@ -456,7 +456,7 @@ namespace Redf.Business.WebService
             dsResult.Tables[0].Columns.Add("GOODSNAME");
             dsResult.Tables[0].Columns.Add("SALEPRICE");
             dsResult.Tables[0].Columns.Add("IMAGEURL");
-            dsResult.Tables[0].Columns.Add("REMARK");
+            dsResult.Tables[0].Columns.Add("REMARKS");
 
             dsResult.Tables.Add("PAGEINFO");
             dsResult.Tables[1].Columns.Add("TOTALCOUNT");
