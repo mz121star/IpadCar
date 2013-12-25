@@ -12,3 +12,8 @@ background-color: #FFF;
 }
 .win1{ background-image: url(../images/win1.png);width: 32px;height: 32px;display: inline-block;text-indent: -9999px}
 .win2{background-image: url(../images/win2.png);width: 32px;height: 32px;display: inline-block;text-indent: -9999px}
+
+.modal-body img{
+    width:60%;
+    height:90%;
+}
