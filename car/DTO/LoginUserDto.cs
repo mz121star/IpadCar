@@ -129,6 +129,7 @@ namespace car.DTO
         public string REMARKS { get; set; }
         public string SALESMAN { get; set; }
         public string TEMPSALEPRICE { get; set; }
+        public string MASTERSALESID { get; set; }
     }
 
     public class GoodsDetailList

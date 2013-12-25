@@ -130,11 +130,11 @@ namespace car.Controllers
         }
 
         [SessionUserParameter]
-        public ActionResult AddGoods(string goodsId, decimal tempSalePrice, string salesMan)
+        public ActionResult AddGoods(string goodsId, decimal tempSalePrice, string salesMan, string operaNum)
         {
             GoodsDetailList list = new GoodsDetailList();
             list.DETAIL = new List<GoodsDetail>();
-            list.DETAIL.Add(new GoodsDetail { GOODSID = goodsId, TEMPSALEPRICE = tempSalePrice.ToString(), SALESMAN = salesMan, SALESID = Session["SalesId"].ToString() });
+            list.DETAIL.Add(new GoodsDetail { GOODSID = goodsId, TEMPSALEPRICE = tempSalePrice.ToString(), SALESMAN = salesMan, SALESID = Session["SalesId"].ToString(), MASTERSALESID = operaNum });
             var message = services.AddGoods(list);
             return Json(message, JsonRequestBehavior.AllowGet);
         }
